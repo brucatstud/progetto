@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/basePostLoginAdmin.html :: headerfiles(title='InsCuratore')"> </head>
+<body>
+	<header th:replace="fragments/basePostLoginAdmin.html :: intestazione"></header>
+	<div class="transparentbox">
+	<div>
+		<h4>Inserisci griglia</h4>
+	</div>
+	<form th:action="@{/grigliaForm}" method="POST" th:object="${griglia}">
+		<div>
+		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>
+			<div>
+				<span>nome:</span>
+				<span><input type="text" th:field="${griglia.modello}" /></span>
+				<span th:if="${#fields.hasErrors('modello')}" th:errors="*{modello}"></span>
+			</div>	
+			<div>
+				<span>cognome:</span>
+				<span><input type="text" th:field="${griglia.marca}" /></span>
+				<span th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}"></span>
+			</div>	
+			<div>
+				<span>dataDiNascita (nota: la data di nascita va messa come yyyy/mm/dd:</span>
+				<span><input type="text" th:field="${griglia.capacita}" /></span>
+				<span th:if="${#fields.hasErrors('capacita')}" th:errors="*{capacita}"></span>
+			</div>
+			<div>
+				<span>luogoDiNascita:</span>
+				<span><input type="text" th:field="${griglia.tempMassima}" /></span>
+				<span th:if="${#fields.hasErrors('tempMassima')}" th:errors="*{tempMassima}"></span>
+			</div>
+			<div>
+				<span>luogoDiNascita:</span>
+				<span><input type="text" th:field="${griglia.descrizione}" /></span>
+				<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+			</div>
+			<div>
+				<span><button type="submit">SUBMIT</button></span>
+			</div>
+		</div>
+		</div>
+	</form>
+    <footer th:replace="fragments/basePostLoginAdmin.html :: fondo"></footer>
+</body>
+</html>

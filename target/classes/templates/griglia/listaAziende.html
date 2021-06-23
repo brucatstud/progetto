@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/basePostLoginAdmin.html :: headerfiles(title=artisti)"> </head>
+<body>
+	<header th:replace="fragments/basePostLoginAdmin.html :: intestazione"></header>
+	<div class="transparentbox">
+	<div>
+	<div id="related_links">
+    	<h4>Lista delle aziende da scegliere</h4>
+		<ul>
+			<li th:each="azienda : ${aziende}">
+			<div th:if="${azienda}" th:object="${azienda}">
+				<a href="grigliaFormAzienda.html" 
+				   th:href="@{'/grigliaFormAzienda' + '/' + ${pitmaster.id} + '/' + ${azienda.id}}" 
+				   th:text="${azienda.nome}">Penna rossa</a>
+			</li>
+		</ul>
+		</div>
+		
+	</div>
+	</div>
+	<footer th:replace="fragments/basePostLoginAdmin.html :: fondo"></footer>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/basePostLoginAdmin.html :: headerfiles(title='InsCuratore')"> </head>
+<body>
+	<header th:replace="fragments/basePostLoginAdmin.html :: intestazione"></header>
+	<div class="transparentbox">
+	<div>
+		<h4>Inserisci azienda</h4>
+	</div>
+	<form th:action="@{/aziendaForm}" method="POST" th:object="${azienda}">
+		<div>
+		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>
+			<div>
+				<span>nome:</span>
+				<span><input type="text" th:field="${azienda.nome}" /></span>
+				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>	
+			<div>
+				<span>cognome:</span>
+				<span><input type="text" th:field="${azienda.partitaIva}" /></span>
+				<span th:if="${#fields.hasErrors('partitaIva')}" th:errors="*{partitaIva}"></span>
+			</div>	
+			<div>
+				<span>dataDiNascita (nota: la data di nascita va messa come yyyy/mm/dd:</span>
+				<span><input type="text" th:field="${azienda.indirizzoSede}" /></span>
+				<span th:if="${#fields.hasErrors('indirizzoSede')}" th:errors="*{indirizzoSede}"></span>
+			</div>
+			<div>
+				<span>luogoDiNascita:</span>
+				<span><input type="text" th:field="${azienda.telefono}" /></span>
+				<span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></span>
+			</div>
+			<div>
+				<span><button type="submit">SUBMIT</button></span>
+			</div>
+		</div>
+		</div>
+	</form>
+    <footer th:replace="fragments/basePostLoginAdmin.html :: fondo"></footer>
+</body>
+</html>

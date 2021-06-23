@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/basePostLoginAdmin.html :: headerfiles(title=artisti)"> </head>
+<body>
+	<header th:replace="fragments/basePostLoginAdmin.html :: intestazione"></header>
+	<div class="transparentbox">
+	<div>
+	<div id="related_links">
+    	<h4>Lista dei legni da scegliere</h4>
+		<ul>
+			<li th:each="legno : ${legni}">
+			<div th:if="${legno}" th:object="${legno}">
+				<a href="carneFormGriglia.html" 
+				   th:href="@{'/carneFormLegna' + '/' + ${carne.id} + '/' + ${legno.id}}" 
+				   th:text="|${legno.nome} ${legno.aroma} ${legno.id}|">Penna rossa</a>
+			</li>
+		</ul>
+		</div>
+	
+		
+	</div>
+	</div>
+	<footer th:replace="fragments/basePostLoginAdmin.html :: fondo"></footer>
+</body>
+</html>

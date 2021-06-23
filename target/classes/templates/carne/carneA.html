@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/basePostLoginAdmin.html :: headerfiles(title=Curatore)"> </head>
+<body>
+	<header th:replace="fragments/basePostLoginAdmin.html :: intestazione"></header>
+	<div class="transparentbox">
+    <div>
+    	<h4>CARNE</h4>
+    	<div th:if="${carne}" th:object="${carne}">
+			<h5 th:text="*{nome}">nome</h5>
+			<h5 th:text="*{provenienza}">cognome </h5>
+			<span th:text="*{eta}"/>
+			<span th:text="*{periodoFrollatura}"/>
+   		</div>
+   		
+   		<div th:if="${legno}" th:object="${legno}">
+    	<h4> legno </h4>
+    	<a href="legno.html" 
+				   th:href="@{'/legna' + '/' + ${legno.id}}"
+				   th:text="${legno.nome}">Penna rossa</a>
+    	</div>
+    	<div th:unless="${legno}">Questo legno non esiste</div>
+    </div>
+    </div>
+    <footer th:replace="fragments/basePostLoginAdmin.html :: fondo"></footer>
+</body>
+</html>
