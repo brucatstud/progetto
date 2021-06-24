@@ -1,13 +1,21 @@
 package it.uniroma3.siw.personal.controller;
 
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.personal.controller.validator.CarneValidator;
 import it.uniroma3.siw.personal.model.Carne;
@@ -16,6 +24,7 @@ import it.uniroma3.siw.personal.model.Legna;
 import it.uniroma3.siw.personal.service.CarneService;
 import it.uniroma3.siw.personal.service.GrigliaService;
 import it.uniroma3.siw.personal.service.LegnaService;
+import it.uniroma3.siw.personal.service.UserService;
 
 @Controller
 public class CarneController {
@@ -29,7 +38,9 @@ public class CarneController {
 	@Autowired
 	private GrigliaService grigliaService;
 	@Autowired
-	private CarneValidator artistaValidator;
+	private CarneValidator carneValidator;
+	@Autowired
+	private UserService userService;
 	
 	
 	@RequestMapping(value="/carni", method = RequestMethod.GET)
@@ -50,6 +61,12 @@ public class CarneController {
         return "carne/carniA";
     }
 	
+	@RequestMapping(value="/elCarni", method = RequestMethod.GET)
+    public String getCarneEl(Model model) {
+    	model.addAttribute("carni", this.carneService.tutti());
+        return "carne/elCarni";
+    }
+	
 	@RequestMapping(value = "/carne/{id}", method = RequestMethod.GET)
     public String getCarne(@PathVariable("id") Long id, Model model) {
 		Carne carne = this.carneService.carnePerId(id);
@@ -57,6 +74,25 @@ public class CarneController {
 		model.addAttribute("griglia",carne.getGriglia() );
     	model.addAttribute("carne", carne);
     	return "carne/carne";
+    }
+	
+	@RequestMapping(value = "/elCarne/{id}", method = RequestMethod.GET)
+    public String getCarneEl(@PathVariable("id") Long id, Model model) {
+		Carne carne = this.carneService.carnePerId(id);
+		model.addAttribute("legna",carne.getLegna() );
+		model.addAttribute("griglia",carne.getGriglia() );
+    	model.addAttribute("carne", carne);
+    	return "carne/elCarne";
+    }
+	
+	@RequestMapping(value = "/carneDel/{id}", method = RequestMethod.GET)
+    public String carneDel(@PathVariable("id") Long id, Model model) {
+		Carne carne = this.carneService.carnePerId(id);
+		Griglia griglia = carne.getGriglia();
+		griglia.getCarne().remove(carne);
+		this.grigliaService.inserisci(griglia);
+		this.carneService.elimina(carne);
+    	return "admin/home";
     }
 	
 	@RequestMapping(value = "/carneM/{id}", method = RequestMethod.GET)
@@ -72,6 +108,7 @@ public class CarneController {
 		Carne carne = this.carneService.carnePerId(id);
 		model.addAttribute("legno",carne.getLegna() );
     	model.addAttribute("carne", carne);
+    	model.addAttribute("griglia",carne.getGriglia() );
     	return "carne/carneA";
     }
     
@@ -84,6 +121,7 @@ public class CarneController {
     @RequestMapping(value = "/carneForm", method = RequestMethod.POST)
     public String newCarne(@ModelAttribute("carne") Carne carne, 
     									Model model, BindingResult bindingResult) {
+    	   this.carneValidator.validate(carne, bindingResult);
     	    if (!bindingResult.hasErrors()) {
         	this.carneService.inserisci(carne);
         	model.addAttribute("carne", carne);
@@ -112,4 +150,34 @@ public class CarneController {
     	carneService.inserisci(carne);
         return "admin/home";
     }
+    
+	
+	@PostMapping("/check/{cid}")
+	public String check(Model model,@PathVariable("cid") Long cid) {
+
+	    Carne carne = this.carneService.carnePerId(cid);
+	    Object nome= (Object) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    model.addAttribute("carne", carne);
+	    if(carne.getUsers()==null) {
+	    	ArrayList<Object> a= new ArrayList<>();
+	    	carne.setUsers(a);
+	    	int i= carne.getLikes();
+		      i++;
+		      carne.setLikes(i);
+		      carne.getUsers().add(nome);
+		      this.carneService.inserisci(carne);
+	    }
+	    else {
+
+	    if (!carne.getUsers().contains(nome)) {
+	      int i= carne.getLikes();
+	      i++;
+	      carne.setLikes(i);
+	      carne.getUsers().add(nome);
+	      this.carneService.inserisci(carne);
+	    }
+	    }
+	    return "carne/carne";
+	}
 }
+

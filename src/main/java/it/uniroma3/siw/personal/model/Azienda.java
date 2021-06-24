@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.springframework.validation.BindingResult;
+
 import lombok.Data;
 
 
@@ -30,5 +32,7 @@ public @Data class Azienda {
 	 
 	 @OneToMany
 	 private List<Griglia> griglie;
+
+	
 
 }

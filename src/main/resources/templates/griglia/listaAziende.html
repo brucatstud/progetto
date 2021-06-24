@@ -11,7 +11,7 @@
 			<li th:each="azienda : ${aziende}">
 			<div th:if="${azienda}" th:object="${azienda}">
 				<a href="grigliaFormAzienda.html" 
-				   th:href="@{'/grigliaFormAzienda' + '/' + ${pitmaster.id} + '/' + ${azienda.id}}" 
+				   th:href="@{'/grigliaFormAzienda' + '/' + ${azienda.id} + '/' + ${griglia.id}}" 
 				   th:text="${azienda.nome}">Penna rossa</a>
 			</li>
 		</ul>

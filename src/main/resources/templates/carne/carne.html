@@ -11,6 +11,7 @@
 			<h5 th:text="*{provenienza}">cognome </h5>
 			<span th:text="*{eta}"/>
 			<span th:text="*{periodoFrollatura}"/>
+			<span th:text="*{likes}"/>
    		</div>
    		
    		<div th:if="${legno}" th:object="${legno}">
@@ -19,7 +20,11 @@
 				   th:href="@{'/legna' + '/' + ${legno.id}}"
 				   th:text="${legno.nome}">Penna rossa</a>
     	</div>
-    	<div th:unless="${legno}">Questo legno non esiste</div>
+    	<div th:unless="${legno}">Questo taglio di carne non ha ancora un legno assegnato per l'affumicatura!
+    	<form action="#" th:action="@{'/check' + '/' + ${carne.id}}" method="post">
+    	<button type="submit" name="upvote">LIKE</button>
+    	</form>
+    	</div>
     </div>
     <footer th:replace="fragments/basePostLogin.html :: fondo"></footer>
 </body>

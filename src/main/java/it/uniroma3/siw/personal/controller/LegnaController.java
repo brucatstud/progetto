@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.personal.controller.validator.CarneValidator;
+import it.uniroma3.siw.personal.controller.validator.LegnaValidator;
 import it.uniroma3.siw.personal.model.Carne;
 import it.uniroma3.siw.personal.model.Legna;
 import it.uniroma3.siw.personal.service.CarneService;
@@ -23,7 +24,7 @@ public class LegnaController {
 	@Autowired
 	private LegnaService legnaService;
 	@Autowired
-	private CarneValidator artistaValidator;
+	private LegnaValidator legnaValidator;
 	
 	@RequestMapping(value="/legni", method = RequestMethod.GET)
     public String getLegna(Model model) {
@@ -60,6 +61,7 @@ public class LegnaController {
     @RequestMapping(value = "/legnaForm", method = RequestMethod.POST)
     public String newLegna(@ModelAttribute("legna") Legna legna, 
     									Model model, BindingResult bindingResult) {
+    	 this.legnaValidator.validate(legna, bindingResult);
     	    if (!bindingResult.hasErrors()) {
         	this.legnaService.inserisci(legna);
             model.addAttribute("legni", this.legnaService.tutti());

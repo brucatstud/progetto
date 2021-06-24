@@ -10,29 +10,31 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import it.uniroma3.siw.personal.model.Carne;
+import it.uniroma3.siw.personal.model.Griglia;
 import it.uniroma3.siw.personal.service.CarneService;
+import it.uniroma3.siw.personal.service.GrigliaService;
 
 
 
 @Component
-public class CarneValidator implements Validator {
+public class GrigliaValidator implements Validator {
 	@Autowired
-	private CarneService carneService;
+	private GrigliaService grigliaService;
 	
-    private static final Logger logger = LoggerFactory.getLogger(CarneValidator.class);
+    private static final Logger logger = LoggerFactory.getLogger(GrigliaValidator.class);
 
 	@Override
 	public void validate(Object o, Errors errors) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nome", "required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "provenienza", "required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dataDiMacello", "required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "eta", "required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "periodoFrollatura", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "modello", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "marca", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "capacita", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "tempMassima", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descrizione", "required");
 
 
 		if (!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");
-			if (this.carneService.alreadyExists((Carne)o)) {
+			if (this.grigliaService.alreadyExists((Griglia)o)) {
 				logger.debug("e' un duplicato");
 				errors.reject("duplicato");
 			}
@@ -41,6 +43,6 @@ public class CarneValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> aClass) {
-		return Carne.class.equals(aClass);
+		return Griglia.class.equals(aClass);
 	}
 }

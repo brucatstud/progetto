@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.uniroma3.siw.personal.model.Carne;
 import it.uniroma3.siw.personal.model.Griglia;
 import it.uniroma3.siw.personal.model.Pitmaster;
 import it.uniroma3.siw.personal.repository.GrigliaRepository;
@@ -52,6 +53,12 @@ public class GrigliaService {
 		else 
 			return false;
 	}
+	
+	@Transactional
+	public void elimina(Griglia griglia) {
+		grigliaRepository.delete(griglia);;
+	}
+	
 
 
 

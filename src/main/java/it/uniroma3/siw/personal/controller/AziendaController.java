@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import it.uniroma3.siw.personal.controller.validator.AziendaValidator;
 import it.uniroma3.siw.personal.controller.validator.CarneValidator;
 import it.uniroma3.siw.personal.model.Azienda;
 import it.uniroma3.siw.personal.model.Griglia;
@@ -23,7 +24,7 @@ public class AziendaController {
 	@Autowired
 	private AziendaService aziendaService;
 	@Autowired
-	private CarneValidator artistaValidator;
+	private AziendaValidator aziendaValidator;
 	
 	@RequestMapping(value="/aziende", method = RequestMethod.GET)
     public String getAzienda(Model model) {
@@ -62,6 +63,7 @@ public class AziendaController {
     @RequestMapping(value = "/aziendaForm", method = RequestMethod.POST)
     public String newAzienda(@ModelAttribute("azienda") Azienda azienda, 
     									Model model, BindingResult bindingResult) {
+    	 this.aziendaValidator.validate(azienda, bindingResult);
     	    if (!bindingResult.hasErrors()) {
         	this.aziendaService.inserisci(azienda);
             model.addAttribute("aziende", this.aziendaService.tutti());

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.personal.controller.validator.CarneValidator;
+import it.uniroma3.siw.personal.controller.validator.PitmasterValidator;
 import it.uniroma3.siw.personal.model.Carne;
 import it.uniroma3.siw.personal.model.Griglia;
 import it.uniroma3.siw.personal.model.Legna;
@@ -27,9 +28,10 @@ public class PitmasterController {
 	@Autowired
 	private PitmasterService pitmasterService;
 	@Autowired
-	private CarneValidator artistaValidator;
+	private PitmasterValidator pitmasterValidator;
 	@Autowired
 	private GrigliaService grigliaService;
+
 	
 	@RequestMapping(value="/pitmasters", method = RequestMethod.GET)
     public String getPitmaster(Model model) {
@@ -68,6 +70,7 @@ public class PitmasterController {
     @RequestMapping(value = "/pitmasterForm", method = RequestMethod.POST)
     public String newPitmaster(@ModelAttribute("pitmaster") Pitmaster pitmaster, 
     									Model model, BindingResult bindingResult) {
+    	 this.pitmasterValidator.validate(pitmaster, bindingResult);
     	    if (!bindingResult.hasErrors()) {
         	this.pitmasterService.inserisci(pitmaster);
             model.addAttribute("pitmaster", pitmaster);

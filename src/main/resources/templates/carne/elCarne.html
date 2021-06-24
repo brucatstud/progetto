@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/basePostLoginAdmin.html :: headerfiles(title=Opera)"> </head>
+<body>
+	<header th:replace="fragments/basePostLoginAdmin.html :: intestazione"></header>
+	<div class="transparentbox">
+    <div>
+    	<h4>VUOI ELIMINARE QUESTA CARNE?</h4>
+    	<div th:if="${carne}" th:object="${carne}">
+			<h5 th:text="*{nome}">nome</h5>
+			<span th:text="*{provenienza}">provenienza </span>
+			<span th:text="*{eta}">eta </span>
+   		</div>
+    	<div th:unless="${carne}">Questa carne non esiste</div>
+    	
+    	<div th:if="${legno}" th:object="${legno}">
+    	<a href="legno.html" 
+				   th:href="@{'/legno' + '/' + ${legno.id}}"
+				   th:text="${legno.nome}">Penna rossa</a>
+    	</div>
+    	<div th:unless="${griglia}">Questa griglia non esiste</div>
+    	<a href="griglia.html" 
+				   th:href="@{'/griglia' + '/' + ${griglia.id}}"
+				   th:text="${griglia.modello}">Penna rossa</a>
+    	</div>
+    	<div th:unless="${griglia}">Questa griglia non esiste</div>
+    </div>
+    <a href="/carneDel" 
+				   th:href="@{'/carneDel' + '/' + ${carne.id}}"
+				   th:text="SI">Penna rossa</a>
+    <a href="/elCarne">NO</a> </span>
+    </div>
+    <footer th:replace="fragments/basePostLoginAdmin.html :: fondo"></footer>
+</body>
+</html>

@@ -17,10 +17,14 @@
     	<h4> CARNI </h4>
     	<li th:each="carne : ${carni}">
 				<a href="carne.html" 
-				   th:href="@{'/carne' + '/' + ${carne.id}}" 
+				   th:href="@{'/carneA' + '/' + ${carne.id}}" 
 				   th:text="${carne.nome}">Penna rossa</a>
 			</li>
 			</div>
+				<h4> azienda </h4>
+    	<a href="azienda.html" 
+				   th:href="@{'/aziendaA' + '/' + ${azienda.id}}"
+				   th:text="${azienda.nome}">Penna rossa</a>
    		</div>
     </div>
     <footer th:replace="fragments/basePostLoginAdmin.html :: fondo"></footer>

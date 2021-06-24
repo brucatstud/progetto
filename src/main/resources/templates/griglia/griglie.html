@@ -11,7 +11,7 @@
 		<ul>
 			<li th:each="griglia : ${griglie}">
 				<a href="griglia.html" 
-				   th:href="@{'/griglia' + '/' + ${carne.id}}" 
+				   th:href="@{'/griglia' + '/' + ${griglia.id}}" 
 				   th:text="${griglia.modello}">Penna rossa
 				   th:text="${griglia.marca}">Penna rossa</a>
 			</li>

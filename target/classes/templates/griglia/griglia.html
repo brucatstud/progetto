@@ -21,6 +21,10 @@
 				   th:text="${carne.nome}">Penna rossa</a>
 			</li>
 			</div>
+			<h4> azienda </h4>
+    	<a href="azienda.html" 
+				   th:href="@{'/azienda' + '/' + ${azienda.id}}"
+				   th:text="${azienda.nome}">Penna rossa</a>
    		</div>
     </div>
     <footer th:replace="fragments/basePostLogin.html :: fondo"></footer>

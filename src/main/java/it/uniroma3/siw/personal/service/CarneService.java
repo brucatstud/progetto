@@ -28,6 +28,11 @@ public class CarneService {
 	}
 	
 	@Transactional
+	public void elimina(Carne carne) {
+		carneRepository.delete(carne);;
+	}
+	
+	@Transactional
 	public List<Carne> carnePerNomeAndProvenienza(String nome, String provenienza) {
 		return carneRepository.findByNomeAndProvenienza(nome, provenienza);
 	}
