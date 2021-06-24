@@ -44,6 +44,7 @@ public class GrigliaController {
 	@RequestMapping(value = "/griglia/{id}", method = RequestMethod.GET)
     public String getGriglia(@PathVariable("id") Long id, Model model) {
 		Griglia griglia = this.grigliaService.grigliaPerId(id);
+		model.addAttribute("griglia", griglia);
 		model.addAttribute("Pitmasters",griglia.getPitmasters() );
     	model.addAttribute("carni", griglia.getCarne());
     	model.addAttribute("azienda", griglia.getAzienda());

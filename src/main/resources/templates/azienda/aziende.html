@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/basePostLogin.html :: headerfiles(title=Curatore)"> </head>
+<head th:replace="fragments/basePostLogin.html :: headerfiles(title=Azienda)"> </head>
 <body>
 	<header th:replace="fragments/basePostLogin.html :: intestazione"></header>
 	<div class="transparentbox">
 	<div>
-	<div class="desc"> Questi qui sono i nostri migliori curatori! Delle ottime persone, estremamente qualificate ed in grado di rispondere ad ogni vostra curiosità! Clicca per vedere quali colleizoni gestiscono</div>
-	<div id="related_links">
+	<div class="center spaziaPoco riquadroDescr">La lista delle aziende produttrici delle nostre griglie. Sono esperte nel settore, e si sono provate più di una volta con i loro prodotti di eccellente qualità.</div>
+	<div id="related_links" class="center">
     	<h4>Lista delle aziende</h4>
 		<ul>
 			<li th:each="azienda : ${aziende}">
 				<a href="azienda.html" 
-				   th:href="@{'/azienda' + '/' + ${legna.id}}" 
+				   th:href="@{'/azienda' + '/' + ${azienda.id}}" 
 				   th:text="${azienda.nome}">Penna rossa
 				   th:text="${azienda.indirizzoSede}">Penna rossa</a>
 			</li>

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/basePostLoginAdmin.html :: headerfiles(title=Curatore)"> </head>
+<head th:replace="fragments/basePostLoginAdmin.html :: headerfiles(title=Pitmasters)"> </head>
 <body>
 	<header th:replace="fragments/basePostLoginAdmin.html :: intestazione"></header>
 	<div class="transparentbox">
 	<div>
-		<div class="desc"> Questi qui sono i nostri migliori curatori! Delle ottime persone, estremamente qualificate ed in grado di rispondere ad ogni vostra curiosità! Clicca per vedere quali colleizoni gestiscono</div>
+		<div class="center spaziaPoco riquadroDescr">Il nome Pitmaster deriva dalla primordiale cottura che avveniva sottoterra, scavando,per l'appunto, una buca.Con la loro ampia esperienza, i Pitmasters sono i re del fuoco e delle temperature stabili. Un buon affumicatore richiede sempre un ottimo fuochista.</div>
 	
-	<div id="related_links">
+	<div id="related_links"class="center">
     	<h4>Lista dei pitmasters</h4>
 		<ul>
 			<li th:each="pitmaster : ${pitmasters}">

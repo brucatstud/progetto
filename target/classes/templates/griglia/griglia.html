@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/basePostLogin.html :: headerfiles(title=Curatore)"> </head>
+	<head th:replace="fragments/basePostLogin.html :: headerfiles(title=Griglia)"> </head>
 <body>
 	<header th:replace="fragments/basePostLogin.html :: intestazione"></header>
 	<div class="transparentbox">
     <div>
     	<h4>GRIGLIA</h4>
     	<div th:if="${griglia}" th:object="${griglia}">
+    	<h5>Modello</h5>
 			<h5 th:text="*{modello}">nome</h5>
+			<h5>Marca</h5>
 			<h5 th:text="*{marca}">cognome </h5>
+			<h5>Capacita</h5>
 			<span th:text="*{capacita}"/>
+			<h5>tempMassima</h5>
 			<span th:text="*{tempMassima}"/>
 			<span th:text="*{descrizione}"/>
+			
+			<h4>Azienda</h4>
+			<a href="azienda.html" 
+				   th:href="@{'/azienda' + '/' + ${azienda.id}}" 
+				   th:text="${azienda.nome}">Penna rossa</a>
 			
 			<div id="related_links">
     	<h4> CARNI </h4>
@@ -21,10 +30,15 @@
 				   th:text="${carne.nome}">Penna rossa</a>
 			</li>
 			</div>
-			<h4> azienda </h4>
-    	<a href="azienda.html" 
-				   th:href="@{'/azienda' + '/' + ${azienda.id}}"
-				   th:text="${azienda.nome}">Penna rossa</a>
+			
+				<div id="related_links">
+    	<h4> PITMASTERS </h4>
+    	<li th:each="pitmaster : ${pitmasters}">
+				<a href="pitmaster.html" 
+				   th:href="@{'/pitmaster' + '/' + ${pitmaster.id}}" 
+				   th:text="${pitmaster.cognome}">Penna rossa</a>
+			</li>
+			</div>
    		</div>
     </div>
     <footer th:replace="fragments/basePostLogin.html :: fondo"></footer>

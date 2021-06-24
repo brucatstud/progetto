@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.personal.controller.validator.CarneValidator;
 import it.uniroma3.siw.personal.controller.validator.PitmasterValidator;
+import it.uniroma3.siw.personal.model.Azienda;
 import it.uniroma3.siw.personal.model.Carne;
 import it.uniroma3.siw.personal.model.Griglia;
 import it.uniroma3.siw.personal.model.Legna;
@@ -87,5 +88,21 @@ public class PitmasterController {
     	pitmaster.setGriglia(grigla);
     	this.pitmasterService.inserisci(pitmaster);
     	return "admin/home";
+    }
+    
+    @RequestMapping(value = "/elPitmaster/{id}", method = RequestMethod.GET)
+    public String elPitmater(@PathVariable("id") Long id, Model model) {
+		Pitmaster pitmaster = this.pitmasterService.pitmasterPerId(id);
+		Griglia griglia = pitmaster.getGriglia();
+		griglia.getPitmasters().remove(pitmaster);
+		this.grigliaService.inserisci(griglia);
+		this.pitmasterService.elimina(pitmaster);
+    	return "admin/home";
+    }
+    
+    @RequestMapping(value="/elPitmasters", method = RequestMethod.GET)
+    public String getPitmasterEl(Model model) {
+    	model.addAttribute("pitmasters", this.pitmasterService.tutti());
+        return "pitmaster/elPitmaster";
     }
 }

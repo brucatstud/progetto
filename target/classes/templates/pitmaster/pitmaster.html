@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/basePostLogin.html :: headerfiles(title=Curatore)"> </head>
+	<head th:replace="fragments/basePostLogin.html :: headerfiles(title=Pitmasters)"> </head>
 <body>
 	<header th:replace="fragments/basePostLogin.html :: intestazione"></header>
 	<div class="transparentbox">
     <div>
     	<h4>LEGNA</h4>
     	<div th:if="${pitmaster}" th:object="${pitmaster}">
+    	<h5>Nome</h5>
 			<h5 th:text="*{nome}">nome</h5>
+			<h5>Cognome</h5>
 			<h5 th:text="*{cognome}">cognome </h5>
 			<span th:text="*{email}"/>
 			<span th:text="*{numeroDiTelefono}"/>

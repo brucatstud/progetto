@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/basePostLoginAdmin.html :: headerfiles(title='InsCuratore')"> </head>
+<head th:replace="fragments/basePostLoginAdmin.html :: headerfiles(title='LegnaForm')"> </head>
 <body>
 	<header th:replace="fragments/basePostLoginAdmin.html :: intestazione"></header>
 	<div class="transparentbox">
 	<div>
 		<h4>Inserisci legna</h4>
 	</div>
-	<form th:action="@{/legnaForm}" method="POST" th:object="${legna}">
+	<form th:action="@{/legnaForm}" method="POST" th:object="${legna}" class="center">
 		<div>
 		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>
 			<div>
-				<span>nome:</span>
+				<span>Nome:</span>
 				<span><input type="text" th:field="${legna.nome}" /></span>
 				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 			</div>	
 			<div>
-				<span>cognome:</span>
+				<span>Provenienza:</span>
 				<span><input type="text" th:field="${legna.provenienza}" /></span>
 				<span th:if="${#fields.hasErrors('provenienza')}" th:errors="*{provenienza}"></span>
 			</div>	
 			<div>
-				<span>dataDiNascita (nota: la data di nascita va messa come yyyy/mm/dd:</span>
+				<span>Percentuale Umidita':</span>
 				<span><input type="text" th:field="${legna.umidita}" /></span>
 				<span th:if="${#fields.hasErrors('umidita')}" th:errors="*{umidita}"></span>
 			</div>
 			<div>
-				<span>luogoDiNascita:</span>
+				<span>Aroma:</span>
 				<span><input type="text" th:field="${legna.aroma}" /></span>
 				<span th:if="${#fields.hasErrors('aroma')}" th:errors="*{aroma}"></span>
 			</div>

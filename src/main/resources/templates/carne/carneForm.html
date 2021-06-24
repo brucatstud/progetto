@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/basePostLoginAdmin.html :: headerfiles(title='InsCuratore')"> </head>
+<head th:replace="fragments/basePostLoginAdmin.html :: headerfiles(title='InsCarne')"> </head>
 <body>
 	<header th:replace="fragments/basePostLoginAdmin.html :: intestazione"></header>
 	<div class="transparentbox">
@@ -8,42 +8,42 @@
 		<h4>Inserisci carne</h4>
 	</div>
 	<form th:action="@{/carneForm}" method="POST" th:object="${carne}">
-		<div>
+		<div class="center">
 		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>
 			<div>
-				<span>nome:</span>
+				<span>Nome:</span>
 				<span><input type="text" th:field="${carne.nome}" /></span>
 				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 			</div>	
 			<div>
-				<span>cognome:</span>
+				<span>Provenienza:</span>
 				<span><input type="text" th:field="${carne.provenienza}" /></span>
 				<span th:if="${#fields.hasErrors('provenienza')}" th:errors="*{provenienza}"></span>
 			</div>	
 			<div>
-				<span>dataDiNascita (nota: la data di nascita va messa come yyyy/mm/dd:</span>
+				<span>Data di Macello (mm/dd):</span>
 				<span><input type="text" th:field="${carne.dataDiMacello}" /></span>
 				<span th:if="${#fields.hasErrors('dataDiMacello')}" th:errors="*{dataDiMacello}"></span>
 			</div>
 			<div>
-				<span>dataDiNascita (nota: la data di nascita va messa come yyyy/mm/dd:</span>
+				<span>eta' della carne:</span>
 				<span><input type="text" th:field="${carne.eta}" /></span>
 				<span th:if="${#fields.hasErrors('eta')}" th:errors="*{eta}"></span>
 			</div>
 			<div>
-				<span>luogoDiNascita:</span>
+				<span>Periodo di Frollatura(gg):</span>
 				<span><input type="text" th:field="${carne.periodoFrollatura}" /></span>
 				<span th:if="${#fields.hasErrors('periodoFrollatura')}" th:errors="*{periodoFrollatura}"></span>
 			</div>
 			<div>
-			
 				<span><button type="submit">SUBMIT</button></span>
 			</div>
 		</div>
-		</div>
-	</form>
+		
+	 </form>
+	 </div>
     <footer th:replace="fragments/basePostLoginAdmin.html :: fondo"></footer>
 </body>
 </html>

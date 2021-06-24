@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/basePostLogin.html :: headerfiles(title=Curatore)"> </head>
+<head th:replace="fragments/basePostLogin.html :: headerfiles(title=Griglia)"> </head>
 <body>
 	<header th:replace="fragments/basePostLogin.html :: intestazione"></header>
 	<div class="transparentbox">
 	<div>
-	<div class="desc"> Questi qui sono i nostri migliori curatori! Delle ottime persone, estremamente qualificate ed in grado di rispondere ad ogni vostra curiosità! Clicca per vedere quali colleizoni gestiscono</div>
-	<div id="related_links">
+	<div class="center spaziaPoco riquadroDescr">Spesso ricavati da vecchie cisterne dell'acqua o del gas, gli offset smokers devono essere costruiti per resistere a cotture interminabili, oltre che vantare di un ottimo isolamento termico.</div>
+	<div id="related_links" class="center">
     	<h4>Lista delle griglie</h4>
 		<ul>
 			<li th:each="griglia : ${griglie}">

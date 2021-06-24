@@ -7,16 +7,19 @@
 </head>
 <body>
 	<header th:fragment="intestazione">
-      <h1><strong>MUSEO DELLE ARTI MODERNE DI ROMA</strong></h1>
+       <h1><strong><center>LA MIMMERIA</center></strong></h1>
       <div class="topnav">
        <a href="/homeA">Home</a>
-       <a href="/artistaA">Autori</a>
-       <a href="/collezioneA">Collezioni</a>
-       <a href="/operaA">Opere</a>
-       <a href="/curatoreA">Curatori</a>
+       <a href="/legniA">Legna</a>
+       <a href="/grigliaA">Griglia</a>
+       <a href="/carniA">Carne</a>
+       <a href="/pitmastersA">Pitmasters</a>
+       <a href="/aziendeA">Aziende</a>
        <a href="/infoA">Informazioni</a>
+        
        <div class="left">
 			<a th:href="@{/logout}">Logout</a>
+      </div>
       </div>
 	
 	</header>
@@ -30,7 +33,7 @@
 	<footer th:fragment="fondo">
 	<div class="foot">
 		<a th:href="@{/homeA}">Home</a>
-		<span class="foot">Museo delle Arti Moderne di Roma, Bruno Cataldi 538939</span>
+		<span class="foot">Barbecue Pit Joint, Bruno Cataldi 538939 - Antonino Iaria 533712</span>
 	</div>
 	</footer>
 </body>

@@ -28,7 +28,7 @@ public class LegnaController {
 	
 	@RequestMapping(value="/legni", method = RequestMethod.GET)
     public String getLegna(Model model) {
-    	model.addAttribute("artisti", this.legnaService.tutti());
+    	model.addAttribute("legni", this.legnaService.tutti());
         return "legna/legni";
     }
 	

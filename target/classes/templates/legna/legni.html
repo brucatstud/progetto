@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/basePostLogin.html :: headerfiles(title=Curatore)"> </head>
+<head th:replace="fragments/basePostLogin.html :: headerfiles(title=Legna)"> </head>
 <body>
 	<header th:replace="fragments/basePostLogin.html :: intestazione"></header>
 	<div class="transparentbox">
 	<div>
-	<div class="desc"> Questi qui sono i nostri migliori curatori! Delle ottime persone, estremamente qualificate ed in grado di rispondere ad ogni vostra curiosità! Clicca per vedere quali colleizoni gestiscono</div>
-	<div id="related_links">
-    	<h4>Lista dei legni</h4>
+	<div class="center spaziaPoco riquadroDescr"> Un buon barbecue non puo' che dipendere da una buona legna!</div>
+	
+	
+	<div id="related_links" class="center">
+    	<h4>Lista dei legni:</h4>
 		<ul>
 			<li th:each="legna : ${legni}">
 				<a href="legna.html" 
@@ -16,7 +18,7 @@
 				   th:text="${legna.provenienza}">Penna rossa</a>
 			</li>
 		</ul>
-		</div>
+	</div>
 	</div>
 	</div>
 	<footer th:replace="fragments/basePostLogin.html :: fondo"></footer>

@@ -4,104 +4,70 @@
 <body>
 <header th:replace="fragments/basePostLoginAdmin.html :: intestazione"></header>
 <div class="transparentbox">
-<div class="desc">Benvenuto amministratore, questa qui è la pagina di controllo dove puoi scegliere l'operazione che preferisci eseguire. Buon lavoro</div>
-<div id="related_links">
-<h4>Pagina Amministratore
-</h4>
-<h4>Artista
-</h4>
+	<div class="center">
+		<div class="centerHomeAdmin">
+<h2 class="center riquadro">Pagina Amministratore
+</h2>
+<p>
+</p>
 <div>
-<a href="/artistaForm">inserisci artista</a>
+<h4 class="spacer">Benvenuto amministratore, da questa dashboard ti sara' possibile gestire con facilita' tutte le informazioni di cui hai bisogno!
+</h4>
 </div>
-<div>
-<a href="/artistaA">mostra artista</a>
 </div>
-<h4>Curatore
+<p>
+</p>
+
+<div class="parent fontFigo">
+  <div>
+    <h4>Azienda
 </h4>
-<div>
-  <a href="/curatoreForm">inserisci curatore</a>
-  </div>
-  <div>
-  <a href="/curatoreA">mostra curatori</a>
-</div>
-<h4>Collezione
-</h4>
-<div>
-  <a href="/collezioneForm">inserisci collezione</a>
-  </div>
-  <div>
-  <a href="/collezioneA">mostra collezioni</a>
-  </div>
-  <div>
-  <a href="/elCollezioni">elimina collezione</a>
-</div>
-<h4>Opera 
-</h4>
-<div>
-  <a href="/operaForm">inserisci opera</a>
-  </div>
-  <div>
-  <a href="/operaA">mostra opere</a>
-  </div>
-  <div>
-  <a href="/elOpere">elimina opera</a>
-</div>
-<h4>Carne 
-</h4>
-<div>
-  <a href="/carneForm">inserisci carne</a>
-  </div>
-  <div>
-  <a href="/carniA">mostra carne</a>
-  </div>
-  <div>
-  <a href="/elCarni">elimina carne</a>
-  </div>
-  <div>
-  <a href="/carniM">inserisci legna</a>
-  </div>
-</div>
-<h4>Legna 
-</h4>
-<div>
-  <a href="/legnaForm">inserisci legna</a>
-  </div>
-  <div>
-  <a href="/legniA">mostra legna</a>
-  </div>
-  <h4>Griglia 
-</h4>
-<div>
-  <a href="/grigliaForm">inserisci griglia</a>
-  </div>
-  <div>
-  <a href="/grigliaA">mostra griglia</a>
-  </div>
-  <div>
-  <a href="/elGriglie">elimina griglia</a>
-  </div>
-</div>
-  <h4>Azienda 
-</h4>
-<div>
+
+		
   <a href="/aziendaForm">inserisci azienda</a>
-  </div>
-  <div>
   <a href="/aziendeA">mostra azienda</a>
+		
   </div>
-</div>
-  <h4>pitmaster 
-</h4>
-<div>
-  <a href="/pitmasterForm">inserisci pitmaster</a>
-  </div>
+  	<div>
+    	<h4>Legna 
+		</h4>
+		<a href="/legnaForm">inserisci legna</a>
+		<a href="/legniA">mostra legna</a>
+  	</div>
   <div>
-  <a href="/pitmastersA">mostra pitmaster</a>
+   		<h4>Griglia 
+		</h4>
+		<div>
+		  <a href="/grigliaForm">inserisci griglia</a>
+		  <a href="/grigliaA">mostra griglia</a>
+		  <a href="/elGriglie">elimina griglia</a>
+		 
+		</div>
   </div>
-</div>
 </div>
 
+<p>
+</p>
+<div class="parent2 fontFigo">
+	<div>
+		<h4>Carne 
+		</h4>
+  <a href="/carneForm">inserisci carne</a>
+  <a href="/carniA">mostra carne</a>
+  <a href="/carniM">inserisci legna</a>
+  <a href="/elCarne">elimina carne</a>
+	</div>
+<div>
+<h4>pitmaster 
+</h4>
+<a href="/pitmasterForm">inserisci pitmaster</a>
+ <a href="/pitmastersA">mostra pitmaster</a>
+ <a href="/elPitmasters">elimina pitmaster</a>
+</div>
+</div>
+</div>  
+</div>
 <footer th:replace="fragments/basePostLoginAdmin.html :: fondo"></footer>
   </body>
-  </div>
+ 
 </html>

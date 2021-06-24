@@ -1,0 +1,22 @@
+<div class="center">
+    <h2>Please Login</h2>
+    <br/>
+</div>
+<a class="btn btn-block btn-social btn-google" href="/oauth2/authorization/google"><span class="fab fa-google"></span> Sign in with Google</a>
+<div><p>OR</p></div>
+     
+<form th:action="@{/doublog}" method="POST" class="center">
+		<div class="center">
+			<div>
+				<span>Username:</span>
+				<span><input name="username" type="text" required /></span>
+			</div>		
+			<div>
+				<span>Password:</span>
+				<span><input name="password" type="password" required /></span>
+			</div>
+			<div>
+				<span><button type="submit">Login</button></span>
+			</div>
+		</div>
+</form>

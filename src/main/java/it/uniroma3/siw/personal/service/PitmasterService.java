@@ -51,5 +51,10 @@ public class PitmasterService {
 			return false;
 	}
 
+	public void elimina(Pitmaster pitmaster) {
+		pitmasterRepository.delete(pitmaster);
+		
+	}
+
 
 }

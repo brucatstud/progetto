@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/basePostLogin.html :: headerfiles(title=Curatore)"> </head>
+	<head th:replace="fragments/basePostLogin.html :: headerfiles(title=Carne)"> </head>
 <body>
 	<header th:replace="fragments/basePostLogin.html :: intestazione"></header>
 	<div class="transparentbox">
@@ -8,14 +8,24 @@
     	<h4>CARNE</h4>
     	<div th:if="${carne}" th:object="${carne}">
 			<h5 th:text="*{nome}">nome</h5>
+			<h5>Provenienza</h5>
 			<h5 th:text="*{provenienza}">cognome </h5>
+			<h5>eta</h5>
 			<span th:text="*{eta}"/>
+			<h5>Periodo di frollatura</h5>
 			<span th:text="*{periodoFrollatura}"/>
+			<h5>Mi piace</h5>
 			<span th:text="*{likes}"/>
    		</div>
    		
+   		<h4> Griglia </h4>
+    	<a href="griglia.html" 
+				   th:href="@{'/griglia' + '/' + ${griglia.id}}"
+				   th:text="${griglia.modello}">Penna rossa</a>
+    	</div>
+   		
    		<div th:if="${legno}" th:object="${legno}">
-    	<h4> legno </h4>
+    	<h4> legno per l'affumicatura</h4>
     	<a href="legno.html" 
 				   th:href="@{'/legna' + '/' + ${legno.id}}"
 				   th:text="${legno.nome}">Penna rossa</a>

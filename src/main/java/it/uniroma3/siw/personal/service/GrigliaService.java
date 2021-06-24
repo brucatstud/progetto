@@ -56,7 +56,7 @@ public class GrigliaService {
 	
 	@Transactional
 	public void elimina(Griglia griglia) {
-		grigliaRepository.delete(griglia);;
+		grigliaRepository.delete(griglia);
 	}
 	
 

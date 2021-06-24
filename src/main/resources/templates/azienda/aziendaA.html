@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/basePostLoginAdmin.html :: headerfiles(title=Curatore)"> </head>
+	<head th:replace="fragments/basePostLoginAdmin.html :: headerfiles(title=Azienda)"> </head>
 <body>
 	<header th:replace="fragments/basePostLoginAdmin.html :: intestazione"></header>
 	<div class="transparentbox">
     <div>
     	<h4>AZIENDA</h4>
     	<div th:if="${azienda}" th:object="${azienda}">
+    	<span>
+			<h5>Nome:</h5>
 			<h5 th:text="*{nome}">nome</h5>
+			</span>
+			<h5>Partita Iva:</h5>
 			<h5 th:text="*{partitaIva}">cognome </h5>
 			<span th:text="*{indirizzoSede}"/>
 			<span th:text="*{telefono}"/>

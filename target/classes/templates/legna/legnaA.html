@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/basePostLoginAdmin.html :: headerfiles(title=Curatore)"> </head>
+	<head th:replace="fragments/basePostLoginAdmin.html :: headerfiles(title=Legna)"> </head>
 <body>
 	<header th:replace="fragments/basePostLoginAdmin.html :: intestazione"></header>
 	<div class="transparentbox">
@@ -9,10 +9,14 @@
     	<div th:if="${legna}" th:object="${legna}">
 			<h5 th:text="*{nome}">nome</h5>
 			<h5 th:text="*{provenienza}">cognome </h5>
+			<h5>Umidita</h5>
 			<span th:text="*{umidita}"/>
+			<h5>Aroma</h5>
 			<span th:text="*{aroma}"/>
    		</div>
     </div>
-    <footer th:replace="fragments/basePostLoginAdmin.html :: fondo"></footer>
+  
 </body>
+</div>
+  <footer th:replace="fragments/basePostLoginAdmin.html :: fondo"></footer>
 </html>
