@@ -70,7 +70,7 @@ public class CarneController {
 	@RequestMapping(value = "/carne/{id}", method = RequestMethod.GET)
     public String getCarne(@PathVariable("id") Long id, Model model) {
 		Carne carne = this.carneService.carnePerId(id);
-		model.addAttribute("legna",carne.getLegna() );
+		model.addAttribute("legno",carne.getLegna() );
 		model.addAttribute("griglia",carne.getGriglia() );
     	model.addAttribute("carne", carne);
     	return "carne/carne";
@@ -79,7 +79,7 @@ public class CarneController {
 	@RequestMapping(value = "/elCarne/{id}", method = RequestMethod.GET)
     public String getCarneEl(@PathVariable("id") Long id, Model model) {
 		Carne carne = this.carneService.carnePerId(id);
-		model.addAttribute("legna",carne.getLegna() );
+		model.addAttribute("legno",carne.getLegna() );
 		model.addAttribute("griglia",carne.getGriglia() );
     	model.addAttribute("carne", carne);
     	return "carne/elCarne";
@@ -106,7 +106,7 @@ public class CarneController {
 	@RequestMapping(value = "/carneA/{id}", method = RequestMethod.GET)
     public String getCarneA(@PathVariable("id") Long id, Model model) {
 		Carne carne = this.carneService.carnePerId(id);
-		model.addAttribute("legna",carne.getLegna() );
+		model.addAttribute("legno",carne.getLegna() );
     	model.addAttribute("carne", carne);
     	model.addAttribute("griglia",carne.getGriglia() );
     	return "carne/carneA";
