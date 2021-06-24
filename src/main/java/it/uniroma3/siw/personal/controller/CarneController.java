@@ -106,7 +106,7 @@ public class CarneController {
 	@RequestMapping(value = "/carneA/{id}", method = RequestMethod.GET)
     public String getCarneA(@PathVariable("id") Long id, Model model) {
 		Carne carne = this.carneService.carnePerId(id);
-		model.addAttribute("legno",carne.getLegna() );
+		model.addAttribute("legna",carne.getLegna() );
     	model.addAttribute("carne", carne);
     	model.addAttribute("griglia",carne.getGriglia() );
     	return "carne/carneA";
@@ -157,6 +157,8 @@ public class CarneController {
 
 	    Carne carne = this.carneService.carnePerId(cid);
 	    Object nome= (Object) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    model.addAttribute("legno",carne.getLegna() );
+    	model.addAttribute("griglia", carne.getGriglia());
 	    model.addAttribute("carne", carne);
 	    if(carne.getUsers()==null) {
 	    	ArrayList<Object> a= new ArrayList<>();
